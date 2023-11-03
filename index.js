@@ -16,12 +16,3 @@ pfServer.listen(PORT,()=>{
 pfServer.get('/',(req,res)=>{
     res.send(`<h1>Project Fair Server Started and waiting for client requests!!</h1>`)
 })
-
-pfServer.post('/',(req,res)=>{
-    res.send(`POST REQUEST`)
-})
-
-
-pfServer.put('/',(req,res)=>{
-    res.send(`PUT REQUEST`)
-})
