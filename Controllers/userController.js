@@ -1,5 +1,22 @@
+const users = require('./Models/userSchema')
 // register Logic
-exports.register =(req,res)=>{
+exports.register = async(req,res)=>{
     console.log('Inside register controller function');
-    res.status(200).json("Register Request recived")
+    const {username,email,password} = req.body
+    try{
+        const existingUser = await users.findOne({email})
+        if(existingUser){
+            res.status(406).json("Account alerday exist !!! please Login....")
+        }else{
+            const newUser = new users({
+                username,email,password,github:"",linkedin:"",profile:""
+            })
+            await newUser.save()
+            res.status(200).json(newUser)
+        }
+    }
+    catch(err){
+        res.status(401).json(`Register API Faild, Error : ${err}`)
+    }
+   
 } 

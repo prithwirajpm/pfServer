@@ -4,6 +4,7 @@ const express= require('express')
 const cors = require('cors') 
 const router = require(`./Routes/router`)
 // Creates an Express application
+require('./Controllers/DB/connection')
 const pfServer = express()
 
 pfServer.use(cors())
